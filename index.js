@@ -4,6 +4,7 @@ const PORT=8000;
 
 //init app
 const app=express();
+const connectionUrl="mongodb://localhost:27017/todoDb";
 
 //view engine
 app.set("view engine","ejs");
