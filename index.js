@@ -11,6 +11,14 @@ mongoose.connect(connectionUrl).then(()=> console.log("Database connected succes
 //view engine
 app.set("view engine","ejs");
 
+app.get("/", (req,res,next)=> {
+    try{
+        res.render("index");
+    }catch(error){
+        res.status(500).json({message:error.message});
+    }
+});
+
 //listen server
 app.listen(PORT,() => {
     console.log(`server is running on ${PORT}`);
