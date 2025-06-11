@@ -25,6 +25,13 @@ app.get("/add-todo", (req, res, next) => {
         res.status(500).json({ message: error.message });
     }
 });
+app.get("/update-todo", (req, res, next) => {
+    try {
+        res.render("updateTodo");
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 //listen server
 app.listen(PORT, () => {
