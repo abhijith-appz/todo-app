@@ -14,28 +14,28 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname,"public")))
 app.get("/", (req, res, next) => {
     try {
-        res.render("index");
+        res.render("index",{title: "List todo"});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 app.get("/add-todo", (req, res, next) => {
     try {
-        res.render("newTodo");
+        res.render("newTodo",{title: "Add todo"});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 app.get("/update-todo", (req, res, next) => {
     try {
-        res.render("updateTodo");
+        res.render("updateTodo",{title: "Update todo"});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 app.get("/delete-todo",(req,res,next)=>{
     try{
-        res.render("deleteTodo")
+        res.render("deleteTodo",{title: "Delete todo"})
 
     }catch(error){
         res.status(500).json({message:error.message});
