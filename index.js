@@ -9,6 +9,10 @@ const connectionUrl = "mongodb://localhost:27017/todoDb";
 
 mongoose.connect(connectionUrl).then(() => console.log("Database connected succesfully")).catch((error) => console.log(error.message));
 
+const todoSchema=mongoose.Schema({title:{type :String,required:true},desc:String},{timestamps:true});
+
+const Todo=mongoose.model("todo",todoSchema);
+
 //view engine
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname,"public")))
