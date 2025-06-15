@@ -18,9 +18,11 @@ const Todo = mongoose.model("todo", todoSchema);
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")))
 app.use(bodyParser.urlencoded({ extended: true }));
-app.get("/", (req, res, next) => {
+app.get("/", async(req, res, next) => {
     try {
-        res.render("index", { title: "List todo" });
+        const todos=await Todo.find({});
+
+        res.render("index", { title: "List todo",todos });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
