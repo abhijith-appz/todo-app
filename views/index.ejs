@@ -11,14 +11,14 @@
                 <th>Description</th>
                 <th>created at</th>
                 <th>updated at</th>
-                <th>Action</th>
+                <th>Action</th>                                 
             </tr>
             <tr>
                 <% for(let i=0;i<todos.length;i++) {%>
                     <td><%= todos[i].title %></td>
                     <td><%= todos[i].desc %></td>
-                    <td><%= todos[i].createdAt %></td>
-                    <td><%= todos[i].updatedAt %></td>
+                    <td><%= moment(todos[i].createdAt).format("MMM DD YYYY, HH:mm:ss") %></td>
+                   <td><%= moment(todos[i].updatedAt).format("MMM DD YYYY, HH:mm:ss") %></td>
                     <td>
                         <a class="btn" href="update-todo">Edit</a>
                         <a class="btn" href="delete-todo">Delete</a>
