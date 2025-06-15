@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", async(req, res, next) => {
     try {
-        const todos=await Todo.find({});
+        const todos=await Todo.find({}).sort({createdAt:-1});
 
         res.render("index", { title: "List todo",todos });
     } catch (error) {
