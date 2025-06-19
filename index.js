@@ -4,12 +4,13 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const moment=require("moment");
 const PORT = 8000;
+const connectMongodb=require("./init/mongodb")
 
 //init app
 const app = express();
-const connectionUrl = "mongodb://localhost:27017/todoDb";
+//mongodb connection
+connectMongodb();
 
-mongoose.connect(connectionUrl).then(() => console.log("Database connected succesfully")).catch((error) => console.log(error.message));
 
 const todoSchema = mongoose.Schema({ title: { type: String, required: true }, desc: String }, { timestamps: true });
 
