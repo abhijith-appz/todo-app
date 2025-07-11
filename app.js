@@ -3,6 +3,10 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const connectMongodb=require("./init/mongodb")
 const todoroute=require("./routes/todo")
+const dotenv = require("dotenv")
+// environment variable
+dotenv.config()
+console.log(process.env.PORT);
 //init app
 const app = express();
 //mongodb connection
@@ -14,4 +18,4 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/",todoroute);
 
-module.express=app;
+module.exports=app;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
