@@ -31,7 +31,8 @@ const updateTodoFormController=async(req, res, next) => {
 };
 const deleteTodoFormController=(req, res, next) => {
     try {
-        res.render("deleteTodo", { title: "Delete todo" });
+        const { id }=req.query;
+        res.render("deleteTodo", { title: "Delete todo" ,id});
 
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -69,4 +70,17 @@ const updateTodoController = async (req,res,next) => {
         res.status(500).json({message: error.message});
     }
 }
-module.exports={homeController,addTodoFormController,updateTodoFormController,deleteTodoFormController,addTodoController,updateTodoController};
+const deleteTodoController=async(req, res, next) => {
+    try{
+        const {id,confirm} = req.query;
+        if(confirm=== "yes"){
+            await Todo.findByIdAndDelete(id);
+        }
+        res.redirect("/")
+
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+}
+
+module.exports={homeController,addTodoFormController,updateTodoFormController,deleteTodoFormController,addTodoController,updateTodoController,deleteTodoController};
